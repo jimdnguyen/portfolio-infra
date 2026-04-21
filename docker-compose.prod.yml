@@ -1,0 +1,48 @@
+services:
+  caddy:
+    image: caddy:alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - ./site-dist:/srv/site
+      - caddy_data:/data
+      - caddy_config:/config
+
+  finally:
+    build: ../finally
+    restart: unless-stopped
+    expose:
+      - "8000"
+    volumes:
+      - finally_data:/app/db
+    environment:
+      - DATABASE_PATH=/app/db/finally.db
+    env_file:
+      - ../finally/.env
+
+  pm:
+    build: ../pm
+    restart: unless-stopped
+    expose:
+      - "8000"
+    volumes:
+      - pm_data:/app/data
+    env_file:
+      - ../pm/.env
+
+  prelegal:
+    build: ../prelegal
+    restart: unless-stopped
+    expose:
+      - "8000"
+    env_file:
+      - ../prelegal/.env
+
+volumes:
+  caddy_data:
+  caddy_config:
+  finally_data:
+  pm_data:

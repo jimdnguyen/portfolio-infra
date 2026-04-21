@@ -1,0 +1,18 @@
+jimdnguyen.dev {
+    root * /srv/site
+    file_server
+}
+
+finally.jimdnguyen.dev {
+    reverse_proxy finally:8000 {
+        flush_interval -1
+    }
+}
+
+pm.jimdnguyen.dev {
+    reverse_proxy pm:8000
+}
+
+prelegal.jimdnguyen.dev {
+    reverse_proxy prelegal:8000
+}
