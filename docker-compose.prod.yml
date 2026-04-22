@@ -15,6 +15,7 @@ services:
     restart: unless-stopped
     expose:
       - "8000"
+    user: "1000:1000"
     env_file:
       - ./site.env
 
@@ -23,6 +24,7 @@ services:
     restart: unless-stopped
     expose:
       - "8000"
+    user: "1000:1000"
     volumes:
       - finally_data:/app/db
     environment:
@@ -35,6 +37,7 @@ services:
     restart: unless-stopped
     expose:
       - "8000"
+    user: "1000:1000"
     volumes:
       - pm_data:/app/data
     env_file:
@@ -45,6 +48,7 @@ services:
     restart: unless-stopped
     expose:
       - "8000"
+    user: "1000:1000"
     env_file:
       - ./prelegal.env
 
