@@ -1,6 +1,5 @@
 jimdnguyen.dev {
-    root * /srv/site
-    file_server
+    reverse_proxy site:8000
 }
 
 finally.jimdnguyen.dev {
