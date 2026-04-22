@@ -16,7 +16,7 @@ services:
     expose:
       - "8000"
     env_file:
-      - ../site/.env
+      - ./site.env
 
   finally:
     build: ../finally
@@ -28,7 +28,7 @@ services:
     environment:
       - DATABASE_PATH=/app/db/finally.db
     env_file:
-      - ../finally/.env
+      - ./finally.env
 
   pm:
     build: ../pm
@@ -38,7 +38,7 @@ services:
     volumes:
       - pm_data:/app/data
     env_file:
-      - ../pm/.env
+      - ./pm.env
 
   prelegal:
     build: ../prelegal
@@ -46,7 +46,7 @@ services:
     expose:
       - "8000"
     env_file:
-      - ../prelegal/.env
+      - ./prelegal.env
 
 volumes:
   caddy_data:
