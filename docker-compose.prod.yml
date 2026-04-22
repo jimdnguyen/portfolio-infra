@@ -16,6 +16,8 @@ services:
     expose:
       - "8000"
     user: "1000:1000"
+    environment:
+      - UV_CACHE_DIR=/tmp/uv-cache
     env_file:
       - ./site.env
 
@@ -29,6 +31,7 @@ services:
       - finally_data:/app/db
     environment:
       - DATABASE_PATH=/app/db/finally.db
+      - UV_CACHE_DIR=/tmp/uv-cache
     env_file:
       - ./finally.env
 
@@ -40,6 +43,8 @@ services:
     user: "1000:1000"
     volumes:
       - pm_data:/app/data
+    environment:
+      - UV_CACHE_DIR=/tmp/uv-cache
     env_file:
       - ./pm.env
 
@@ -49,6 +54,8 @@ services:
     expose:
       - "8000"
     user: "1000:1000"
+    environment:
+      - UV_CACHE_DIR=/tmp/uv-cache
     env_file:
       - ./prelegal.env
 
